@@ -1,5 +1,7 @@
 # Astro Starter Kit: Basics
 
+julio.corbaz@gmail.com
+
 ```
 npm create astro@latest -- --template basics
 ```
