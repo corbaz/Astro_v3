@@ -1,11 +1,32 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v3.0.7"><title>Welcome to Astro.</title><!-- https://daisyui.com/components/ 
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    --><link rel="stylesheet" href="/_astro/index.8c03c719.css" />
-<style type="text/css">h1[data-astro-cid-lj7qcwfm]{color:#b15050}main[data-astro-cid-j7pv25f6]{margin:auto;padding:1rem;width:800px;max-width:calc(100% - 2rem);color:#fff;font-size:20px;line-height:1.6}.astro-a[data-astro-cid-j7pv25f6]{position:absolute;top:-32px;left:50%;transform:translate(-50%);width:220px;height:auto;z-index:-1}h1[data-astro-cid-j7pv25f6]{font-size:4rem;font-weight:700;line-height:1;text-align:center;margin-bottom:1em;//color: cyan}.text-gradient[data-astro-cid-j7pv25f6]{background-image:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:400%;background-position:0%}.instructions[data-astro-cid-j7pv25f6]{margin-bottom:2rem;border:1px solid rgba(var(--accent-light),25%);background:linear-gradient(rgba(var(--accent-dark),66%),rgba(var(--accent-dark),33%));padding:1.5rem;border-radius:8px}.instructions[data-astro-cid-j7pv25f6] code[data-astro-cid-j7pv25f6]{font-size:.8em;font-weight:700;background:rgba(var(--accent-light),12%);color:rgb(var(--accent-light));border-radius:4px;padding:.3em .4em}.instructions[data-astro-cid-j7pv25f6] strong[data-astro-cid-j7pv25f6]{color:rgb(var(--accent-light))}.link-card-grid[data-astro-cid-j7pv25f6]{display:grid;grid-template-columns:repeat(auto-fit,minmax(24ch,1fr));gap:2rem;padding:0}
-</style></head><body><main data-astro-cid-j7pv25f6><div class="text-purple-500 text-5xl text-center pt-8" data-astro-cid-lj7qcwfm>
-Hola Julio 🐵 - Astro 🐱‍🚀
-</div><h1 class="text-center" data-astro-cid-lj7qcwfm>julio.corbaz@gmail.com</h1></main></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v3.0.10"><title>Welcome to Astro.</title><!-- https://daisyui.com/components/ --><link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="/_astro/index.75408124.css" />
+<style type="text/css">main[data-astro-cid-j7pv25f6]{margin:auto;padding:1rem;width:800px;max-width:calc(100% - 2rem);color:#fff;font-size:20px;line-height:1.6}
+</style></head><body><main data-astro-cid-j7pv25f6><header class="py8 px4 mx-auto max-w-xl lg:py16 lg:px-6 text-center"><h1 class="text-5xl text-white font-bold">SpaceX Lauches 🚀</h1><img class="pt-4 mx-auto" src="nike.svg" alt="Nike"></header><h2 class="text-4xl text-center text-red-600 pt-8 pb-2">Productos</h2><div class="bg-[#8d0909] text-yellow-400 p-4 pb-1 rounded-xl"><ul><li><h2>Zapatilla Nike 1</h2><p class="py-4">La mejor zapatilla para correr</p><hr class="text-black text-xl pt-8"></li><li><h2>Zapatilla Nike 2</h2><p class="py-4">La mejor zapatilla para caminar</p><hr class="text-black text-xl pt-8"></li><li><h2>Nike ojotas</h2><p class="py-4">Playeras</p><hr class="text-black text-xl pt-8"></li><li><h2>Julio</h2><p class="py-4">jugadores argentinos de basket</p><hr class="text-black text-xl pt-8"></li></ul></div><h2 class="text-4xl text-center text-red-600 pt-8 py-2">
+Alta de Producto - (POST)
+</h2><div class="bg-[#8d0909] text-yellow-400 p-4 pb-1 rounded-xl align-middle"><form id="form"><label class="text-base" for="name">Nombre del producto:</label><br><input class="bg-gray-400 text-red-600 px-2 text-base" type="text" id="name" name="name"><br><label class="text-base" for="description">Descripcion del producto:</label><br><input class="bg-gray-400 text-red-600 px-2 text-base" type="text" id="description" name="description"><br><input class="bg-yellow-400 text-white my-4 px-4 py-1 rounded-md" type="submit" value="Alta"></form><script type="module">
+    window.onload = function () {
+      document
+        .getElementById("form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const description = document.getElementById("description").value;
+
+          const response = await fetch("http://localhost:3000/products", {
+            method: "POST",
+            body: JSON.stringify({
+              name: name,
+              description: description,
+            }),
+            headers: { "Content-Type": "application/json" },
+          });
+
+          if (response.status == 201) {
+            alert("Producto agregado exitosamente!");
+            location.reload();
+          } else {
+            alert("Hubo un error al agregar el producto");
+          }
+        });
+    };
+  </script></div></main></body></html>
