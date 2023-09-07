@@ -1,6 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import H11 from "../../components/H11";
 
 const titulo = "Titulo Principal";
 const subtitulo = "Titulo Secundario";
@@ -10,5 +9,5 @@ const st_class = "text-red-600 text-end text-4xl px-48";
 
 <Layout title="Hola">
   <h2 class="text-red-600 text-2xl">/ruta 1</h2>
-  <H11 {t_class} {titulo} {st_class} {subtitulo} />
+  <h1>{t_class} {titulo} {st_class} {subtitulo}</h1>
 </Layout>
