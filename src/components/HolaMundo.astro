@@ -1,14 +1,84 @@
 ---
-// Aqui va el JS
+let data = [{}];
+let pais_name = "";
+const pais = "El Salvador";
+const url = `https://restcountries.com/v3.1/name/${pais}?fullText=true`;
+const response = await fetch(url);
+if (response.ok) {
+  // true si el status es 200-299
+  // Obtenemos el cuerpo (body) como un objeto json
+  data = await response.json();
+  pais_name = data[0]["maps"]["googleMaps"];
+
+  console.log("json", pais_name);
+} else {
+  console.error("Error HTTP", response.status);
+}
+
+/* 
+const url = "https://api.github.com/users/corbaz";
+const response = await fetch(url);
+const data = await response.json(); 
+*/
 ---
 
-<div class="text-blue-500 text-5xl text-center pt-8">
-    Hola Mundo 🐵 - Astro 🐱‍🚀
+<div class="text-purple-500 text-5xl text-center pt-8">
+  Hola Julio 🐵 - Astro 🐱‍🚀
 </div>
-<h1 class="text-center">julio.corbaz@gmail.com</h1>
+<a class="text-center text-5xl" href={pais_name}>{pais}</a>
+
+<button class="animate-wiggle shake-left-right"> Hej, look at me!</button>
+
+<button
+  class="slide-left text-blue-500 bg-pink-600 p-2 rounded-md animate-jump-in animate-delay-300 animate-once"
+>
+  Wait a bit, then jump right in.
+</button>
 
 <style>
-    h1 {
-        color: rgb(177, 80, 80);
+  h1 {
+    color: rgb(177, 80, 80);
+  }
+
+  .shake-left-right {
+    animation: shake-left-right 0.8s linear both;
+  }
+  @keyframes shake-left-right {
+    0%,
+    100% {
+      transform: rotate(0deg);
+      transform-origin: 50% 50%;
     }
+    10% {
+      transform: rotate(8deg);
+    }
+    20%,
+    40%,
+    60% {
+      transform: rotate(-10deg);
+    }
+    30%,
+    50%,
+    70% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(-8deg);
+    }
+    90% {
+      transform: rotate(8deg);
+    }
+  }
+
+  .slide-left {
+    animation: slide-left 0.4s linear both;
+  }
+  @keyframes slide-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100px);
+    }
+  }
 </style>

@@ -1,0 +1,25 @@
+---
+// Establece el endpoint de tu servidor.
+let endpoint = "http://localhost:3000/products";
+
+// Usa fetch para realizar una petición GET al servidor.
+let response = await fetch(endpoint);
+
+// Parsea la respuesta a JSON.
+let data = await response.json();
+---
+
+<>
+  <h2 class="text-4xl text-center text-red-600 pt-8 pb-2">Productos</h2>
+  <div class="bg-[#8d0909] text-yellow-400 p-4 pb-1 rounded-xl">
+  <ul>
+    {data.map(product => (
+      <li>
+        <h2>{product.name}</h2>
+        <p class="py-4">{product.description}</p>
+        <hr class="text-black text-xl pt-8">
+      </li>
+    ))}
+  </ul>
+</div>
+</>

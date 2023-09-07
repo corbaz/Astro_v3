@@ -75,27 +75,40 @@ nvm version
 
 pnpm create astro@latest
 npx astro add tailwind
+npm install -g json-server
 ```
 
 ### package.json
 ```cmd
 {
-  "name": "astro03",
+  "name": "astrov3",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "json-server": "json-server --watch ./src/data/db.json",
     "dev": "astro dev --host",
     "start": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy-gh-pages": "astro build && gh-pages -d dist",
+    "deploy-surge": "astro build && surge dist astro-v3.surge.sh"
   },
   "dependencies": {
+    "@astrojs/react": "^3.0.1",
     "@astrojs/tailwind": "^5.0.0",
-    "astro": "^3.0.6",
-    "tailwindcss": "^3.3.3"
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "astro": "^3.0.10",
+    "json-server": "^0.17.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sonner": "^0.7.0",
+    "tailwindcss": "^3.3.3",
+    "tailwindcss-animated": "^1.0.1"
   }
 }
+
 ```
 
 ### npm run astro
@@ -110,7 +123,7 @@ npm run astro
 
   astro [command] [...flags]
 
-   Commands 
+   Commands
 
                 add  Add an integration.
               build  Build your project and write it to disk.
@@ -122,8 +135,8 @@ npm run astro
                sync  Generate content collection types.
           telemetry  Configure telemetry settings.
 
-   Global Flags 
-   
+   Global Flags
+
     --config <path>  Specify your config file.
       --root <path>  Specify your project root folder.
        --site <url>  Specify your project site.
@@ -135,7 +148,7 @@ npm run astro
 ```
 
 ### npm run astro info
-```cmd 
+```cmd
 Astro                 v3.0.7
 Node                  v18.17.1
 System                Windows (x64)
@@ -144,4 +157,41 @@ Output                static
 Adapter               none
 Integrations          @astrojs/tailwind
                       @astrojs/react"
+
+
+
+npx astro add --help
+
+  astro add [...integrations] [...adapters]
+
+   Flags
+      --yes   Accept all prompts.
+      --help  Show this help message.
+
+   UI Frameworks
+       react  astro add react
+      preact  astro add preact
+         vue  astro add vue
+      svelte  astro add svelte
+    solid-js  astro add solid-js
+         lit  astro add lit
+    alpinejs  astro add alpinejs
+
+   SSR Adapters
+     netlify  astro add netlify
+      vercel  astro add vercel
+        deno  astro add deno
+  cloudflare  astro add cloudflare
+        node  astro add node
+
+   Others
+    tailwind  astro add tailwind
+       image  astro add image
+         mdx  astro add mdx
+   partytown  astro add partytown
+     sitemap  astro add sitemap
+    prefetch  astro add prefetch
+
+For more integrations, check out: https://astro.build/integrations
+
 ```
